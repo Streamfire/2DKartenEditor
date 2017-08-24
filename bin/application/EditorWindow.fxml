@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane dividerPositions="0.3" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" onMouseMoved="#update" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditorWindowController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <TabPane layoutY="28.0" prefHeight="771.0" prefWidth="354.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Tileset">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Canvas fx:id="tilesetCanvas" height="709.0" layoutY="32.0" onMouseClicked="#SelectionCanvasClicked" width="354.0" />
+                              <ChoiceBox fx:id="LayerEditChoiceBox" layoutX="136.0" layoutY="2.0" prefWidth="150.0" />
+                              <Separator layoutY="24.0" prefHeight="14.0" prefWidth="354.0" />
+                              <ScrollBar fx:id="tilesetScrollbar" layoutX="-1.0" layoutY="728.0" onMouseClicked="#update" onMouseDragged="#update" onScroll="#update" prefHeight="14.0" prefWidth="356.0" />
+                              <Label layoutX="55.0" layoutY="6.0" text="layer to edit:" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Settings">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <CheckBox fx:id="checkBoxShowSolidity" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#SolidityToggled" text="Show Solidity" />
+                              <MenuButton fx:id="LayerMenueBtn" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" text="LayerSelection" />
+                              <Separator layoutY="521.0" prefHeight="25.0" prefWidth="354.0" />
+                              <CheckBox fx:id="checkBoxForceShowAllLayers" layoutX="139.0" layoutY="47.0" mnemonicParsing="false" onAction="#AllLayersToggled" text="Show All Layers" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="354.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                        <MenuItem mnemonicParsing="false" onAction="#FileMenueNewClicked" text="New" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#SaveMenueClicked" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#LoadMenueClicked" text="Load" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem mnemonicParsing="false" onAction="#CloseClicked" text="Close" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Canvas fx:id="mapCanvas" height="798.0" onMouseClicked="#MapCanvasClicked" width="838.0" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
